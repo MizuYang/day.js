@@ -35,39 +35,11 @@
 
     <main>
       <!-- 列出該語系的月份、週 -->
-      <section class="bg-gainsboro mb-3 p-10">
-        <h2 class="text-20 mb-3">列出該語系的月份、週</h2>
-        <div class="bg-whitesmoke mb-3 p-3">
-          <h3 class="text-18 fw-bold-7 mb-1">dayjs.weekdays</h3>
-          <p class="p-2">
-            {{ weekdays }}
-          </p>
-        </div>
-        <div class="bg-whitesmoke mb-3 p-3">
-          <h3 class="text-18 fw-bold-7 mb-1">dayjs.weekdaysShort</h3>
-          <p class="p-2">
-            {{ weekdaysShort }}
-          </p>
-        </div>
-        <div class="bg-whitesmoke mb-3 p-3">
-          <h3 class="text-18 fw-bold-7 mb-1">dayjs.weekdaysMin</h3>
-          <p class="p-2">
-            {{ weekdaysMin }}
-          </p>
-        </div>
-        <div class="bg-whitesmoke mb-3 p-3">
-          <h3 class="text-18 fw-bold-7 mb-1">dayjs.monthsShort</h3>
-          <p class="p-2">
-            {{ monthsShort }}
-          </p>
-        </div>
-        <div class="bg-whitesmoke mb-3 p-3">
-          <h3 class="text-18 fw-bold-7 mb-1">dayjs.months</h3>
-          <p class="p-2">
-            {{ months }}
-          </p>
-        </div>
-      </section>
+      <Demo1 :weekdays="weekdays"
+             :weekdaysShort="weekdaysShort"
+             :weekdaysMin="weekdaysMin"
+             :monthsShort="monthsShort"
+             :months="months" />
     </main>
   </div>
 </template>
@@ -75,10 +47,16 @@
 <script setup>
 import { ref, watchEffect } from 'vue'
 import dayjs from 'dayjs'
+
+import Demo1 from '@/components/列出該語系的月份和週.vue'
+
+// 匯入語系
 import 'dayjs/locale/zh-cn'
 import 'dayjs/locale/ja'
 
+// 匯入 dayjs 的 plugin
 import localeData from 'dayjs/plugin/localeData'
+import minMax from 'dayjs/plugin/minMax'
 
 // data
 const now = dayjs()
@@ -89,6 +67,7 @@ const weekdaysShort = ref('')
 const weekdaysMin = ref('')
 const monthsShort = ref('')
 const months = ref('')
+// 比較日期的大小
 
 console.log('now', now)
 
@@ -102,8 +81,9 @@ watchEffect(() => {
   列出該語系的月份和週()
 })
 
+// dayjs 的 plugin 註冊
 dayjs.extend(localeData)
-
+dayjs.extend(minMax)
 dayjs().localeData()
 
 列出該語系的月份和週()
@@ -116,25 +96,26 @@ function 列出該語系的月份和週 () {
   if (!dayjs.months) return
 
   weekdays.value = dayjs.weekdays()
-  console.log(dayjs.weekdays())
+  // console.log(dayjs.weekdays())
   // ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 
   weekdaysShort.value = dayjs.weekdaysShort()
-  console.log(dayjs.weekdaysShort())
+  // console.log(dayjs.weekdaysShort())
   // ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 
   weekdaysMin.value = dayjs.weekdaysMin()
-  console.log(dayjs.weekdaysMin())
+  // console.log(dayjs.weekdaysMin())
   // ['日', '一', '二', '三', '四', '五', '六']
 
   monthsShort.value = dayjs.monthsShort()
-  console.log(dayjs.monthsShort())
+  // console.log(dayjs.monthsShort())
   // ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
 
   months.value = dayjs.months()
-  console.log(dayjs.months())
+  // console.log(dayjs.months())
 // ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 }
+
 </script>
 
 <style lang='scss' scope></style>
