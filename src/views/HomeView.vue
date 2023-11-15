@@ -35,86 +35,26 @@
 
     <main>
       <!-- 列出該語系的月份、週 -->
-      <Demo1 :weekdays="weekdays"
-             :weekdaysShort="weekdaysShort"
-             :weekdaysMin="weekdaysMin"
-             :monthsShort="monthsShort"
-             :months="months" />
+      <Demo1 />
+
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
 import dayjs from 'dayjs'
 
-import Demo1 from '@/components/列出該語系的月份和週.vue'
+import Demo1 from '@/components/Demo1列出該語系的月份和週.vue'
 
-// 匯入語系
-import 'dayjs/locale/zh-cn'
-import 'dayjs/locale/ja'
+// composables
+import { useLang } from '@/composables/useLang.js'
 
-// 匯入 dayjs 的 plugin
-import localeData from 'dayjs/plugin/localeData'
-import minMax from 'dayjs/plugin/minMax'
+const { lang } = useLang()
 
 // data
 const now = dayjs()
-const lang = ref('zh-cn')
-// 列出該語系的月份、週
-const weekdays = ref('')
-const weekdaysShort = ref('')
-const weekdaysMin = ref('')
-const monthsShort = ref('')
-const months = ref('')
-// 比較日期的大小
 
 console.log('now', now)
-
-// watchEffect
-// 設定語系
-watchEffect(() => {
-  // dayjs().locale(lang.value).format() // 局部修改语言配置
-  dayjs.locale(lang.value)
-  console.log('當前的語系為：', dayjs.locale())
-
-  列出該語系的月份和週()
-})
-
-// dayjs 的 plugin 註冊
-dayjs.extend(localeData)
-dayjs.extend(minMax)
-dayjs().localeData()
-
-列出該語系的月份和週()
-
-function 列出該語系的月份和週 () {
-  if (!dayjs.weekdays) return
-  if (!dayjs.weekdaysShort) return
-  if (!dayjs.weekdaysMin) return
-  if (!dayjs.monthsShort) return
-  if (!dayjs.months) return
-
-  weekdays.value = dayjs.weekdays()
-  // console.log(dayjs.weekdays())
-  // ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-
-  weekdaysShort.value = dayjs.weekdaysShort()
-  // console.log(dayjs.weekdaysShort())
-  // ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
-
-  weekdaysMin.value = dayjs.weekdaysMin()
-  // console.log(dayjs.weekdaysMin())
-  // ['日', '一', '二', '三', '四', '五', '六']
-
-  monthsShort.value = dayjs.monthsShort()
-  // console.log(dayjs.monthsShort())
-  // ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-
-  months.value = dayjs.months()
-  // console.log(dayjs.months())
-// ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-}
 
 </script>
 

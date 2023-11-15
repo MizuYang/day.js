@@ -35,7 +35,20 @@
 </template>
 
 <script setup>
-defineProps(['weekdays', 'weekdaysShort', 'weekdaysMin', 'monthsShort', 'months'])
+import { storeToRefs } from 'pinia'
+
+// store
+import { useDemo1Store } from '@/stores/demo1Store.js'
+
+// store
+const {
+  weekdays,
+  weekdaysShort,
+  weekdaysMin,
+  monthsShort,
+  months
+} = storeToRefs(useDemo1Store())
+
 </script>
 
 <style lang='scss' scope></style>
