@@ -1,6 +1,6 @@
 <template>
   <!-- 指定日期 -->
-  <div class="bg-whitesmoke ms-5 p-3"
+  <div class="bg-whitesmoke ms-5 p-7 mb-10"
         style="width:100%;">
     <p class="text-18 text-center fw-bold-7 mb-5">指定日期</p>
 
@@ -16,59 +16,49 @@
              >
     </label>
 
-    <!-- 增加、減少 radio -->
-    <div class="d-flex align-items-center mb-3">
-      <div class="me-5">
-        <input class="form-check-input" type="radio"
-                value="targetAdd" id="targetAdd"
-                name="targetDateOperationMode"
-                v-model="targetDateOperationMode">
-        <label class="form-check-label ps-2" for="targetAdd">
-          增加
-        </label>
+    <div class="d-flex align-items-center py-5">
+      <!-- 增加、減少 radio -->
+      <div class="d-flex align-items-center">
+        <div class="me-5">
+          <input class="form-check-input" type="radio"
+                  value="targetAdd" id="targetAdd"
+                  name="targetDateOperationMode"
+                  v-model="targetDateOperationMode">
+          <label class="form-check-label ps-2" for="targetAdd">
+            增加
+          </label>
+        </div>
+        <div class="my-2">
+          <input class="form-check-input" type="radio"
+                  value="targetSubtract" id="targetSubtract"
+                  name="targetDateOperationMode"
+                  v-model="targetDateOperationMode">
+          <label class="form-check-label ps-2" for="targetSubtract">
+            減少
+          </label>
+        </div>
       </div>
-      <div class="my-2">
-        <input class="form-check-input" type="radio"
-                value="targetSubtract" id="targetSubtract"
-                name="targetDateOperationMode"
-                v-model="targetDateOperationMode">
-        <label class="form-check-label ps-2" for="targetSubtract">
-          減少
-        </label>
-      </div>
-    </div>
-
-    <!-- 增加獲減少的數值設定 -->
-    <label for="targetModificationNum" class="d-flex align-items-center">
-      <p class="me-1">
-        <span :class="isTargetAddMode?'text-success':'text-danger'">
-          {{ isTargetAddMode?'增加':'減少' }}
-        </span>
-        的數值
-      </p>
-      <input type="number"
-              class="form-control ms-3"
-              id="targetModificationNum"
-              v-model.number="targetModificationNum"
-              style="width:50%;">
-    </label>
-
-    <!-- 增加或減少的單位設定 -->
-    <div class="d-flex align-items-center my-3">
-      <label for="targetUnitSetup" class="me-5">
-        <p>
-          <span :class="isTargetAddMode?'text-success':'text-danger'">
-            {{ isTargetAddMode?'增加':'減少' }}
-          </span>
-            的單位
-        </p>
+      <!-- 增加獲減少的數值設定 -->
+      <label for="targetModificationNum" class="d-flex align-items-center me-2">
+        <input type="number"
+                class="form-control text-center ms-3"
+                id="targetModificationNum"
+                v-model.number="targetModificationNum"
+                style="width:100px;
+                       padding: 4.5px 0;">
       </label>
-      <select class="form-select w-50"
-              v-model="targetMdificationUnit" id="targetUnitSetup">
-        <option v-for="unit in unitSelectionData" :key="unit"
-                :value="unit.en">{{ unit.cn }}</option>
-      </select>
+      <!-- 增加或減少的單位設定 -->
+      <div class="d-flex align-items-center">
+        <select class="form-select"
+                v-model="targetMdificationUnit" id="targetUnitSetup">
+          <option v-for="unit in unitSelectionData" :key="unit"
+                  :value="unit.en">{{ unit.cn }}</option>
+        </select>
+      </div>
     </div>
+
+    <!-- 指定日期 -->
+    <TargetComputed />
   </div>
 </template>
 
@@ -77,12 +67,13 @@
 import { storeToRefs } from 'pinia'
 import { useTargetStore } from '@/stores/demo3/targetStore.js'
 
+import TargetComputed from '@/components/demo3-items/公式元件/TargetComputed.vue'
+
 // store
 const {
   targetDate,
   targetDateOperationMode,
   targetModificationNum,
-  isTargetAddMode,
   targetMdificationUnit,
   unitSelectionData
 } = storeToRefs(useTargetStore())

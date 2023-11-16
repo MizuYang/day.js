@@ -1,14 +1,12 @@
 <template>
   <!-- 今天日期 運算過程 -->
   <div class="d-flex align-items-center">
-    今天日期： {{ today.format('YYYY-MM-DD HH:mm:ss A') }} <span class="text-gray ms-10">=></span>
-
     <!-- 顯示加減運算過程, 例：10:00 - 5分鐘 = 09:55 -->
-    <div class="d-flex align-items-center ms-10">
+    <div class="d-flex align-items-center">
       <span class="text-gray border-bottom border-dark px-3">{{ today.format('YYYY-MM-DD HH:mm:ss A') }}</span>
 
       <!-- "+" 或 "-" 符號 -->
-      <span class="text-20 fw-bold-9 mx-5"
+      <span class="text-20 fw-bold-9 mx-3"
             :class="isTodayAddMode?'text-success':'text-danger'"
             :style="!isTodayAddMode&&'padding:0 2.25px;'">
         {{ isTodayAddMode?'+':'-' }}
@@ -20,7 +18,7 @@
         {{ todayUnitCn }}
       </span>
 
-      <span class="text-gray mx-5">=</span>
+      <span class="text-gray mx-3">=</span>
 
       <!-- 計算結果 -->
       <span class="text-gray border-bottom border-dark px-3">
