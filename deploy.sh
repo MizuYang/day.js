@@ -26,6 +26,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<mizuyang>/<mizuyang>.github.io.git main
 
 # if you are deploying to https://<mizuyang>.github.io/dayjs
-git push -f git@github.com:<mizuyang>/dayjs.git main:gh-pages
+# git push -f git@github.com:<mizuyang>/dayjs.git main:gh-pages
+git push -f https://github.com/MizuYang/dayjs.git main:gh-pages
 
 cd -
