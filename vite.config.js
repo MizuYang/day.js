@@ -4,10 +4,7 @@ import { fileURLToPath, URL } from 'url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/day.js/' //* 儲存庫名稱
-    : '/',
+  base: '/dayjs/', //! 請輸入儲存庫名稱
   plugins: [vue()],
   resolve: {
     alias: [
