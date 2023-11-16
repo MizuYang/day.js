@@ -42,6 +42,9 @@
 
       <!-- 日期加減 -->
       <Demo3 />
+
+      <!-- Demo4驗證日期格式 -->
+      <Demo4 />
     </main>
   </div>
 </template>
@@ -52,6 +55,7 @@ import dayjs from 'dayjs'
 import Demo1 from '@/components/Demo1列出該語系的月份和週.vue'
 import Demo2 from '@/components/Demo2比較日期的大小.vue'
 import Demo3 from '@/components/Demo3日期加減.vue'
+import Demo4 from '@/components/Demo4驗證日期格式.vue'
 
 // composables
 import { useLang } from '@/composables/useLang.js'
