@@ -39,6 +39,9 @@
 
       <!-- 比較日期的大小 -->
       <Demo2 />
+
+      <!-- 日期加減 -->
+      <Demo3 />
     </main>
   </div>
 </template>
@@ -48,6 +51,7 @@ import dayjs from 'dayjs'
 
 import Demo1 from '@/components/Demo1列出該語系的月份和週.vue'
 import Demo2 from '@/components/Demo2比較日期的大小.vue'
+import Demo3 from '@/components/Demo3日期加減.vue'
 
 // composables
 import { useLang } from '@/composables/useLang.js'
@@ -59,6 +63,7 @@ const { lang } = useLang()
 const now = dayjs()
 
 console.log('dayjs()', now)
+
 </script>
 
 <style lang='scss' scope></style>
