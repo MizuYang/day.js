@@ -43,6 +43,7 @@ export const useDemo1Store = defineStore('demo1Store', () => {
     weekdaysShort,
     weekdaysMin,
     monthsShort,
+    months,
     列出該語系的月份和週
   }
 })

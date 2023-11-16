@@ -1,6 +1,6 @@
 <template>
   <section class="bg-gainsboro mb-3 p-10">
-    <h2 class="text-20 mb-3">列出該語系的月份、週</h2>
+    <h2 class="text-20 mb-3">1. 列出該語系的月份、週</h2>
     <div class="bg-whitesmoke mb-3 p-3">
       <h3 class="text-18 fw-bold-7 mb-1">dayjs.weekdays</h3>
       <p class="p-2">
