@@ -5,10 +5,10 @@
       <div class="d-flex align-items-center bg-whitesmoke p-3">
         <div>
           <input class="form-check-input" type="radio"
-                 value="zh-cn" id="zh-cn"
+                 value="zh-tw" id="zh-tw"
                  name="i18n"
                  v-model="lang">
-          <label class="form-check-label ps-2" for="zh-cn">
+          <label class="form-check-label ps-2" for="zh-tw">
             中文
           </label>
         </div>
@@ -43,7 +43,7 @@
       <!-- 日期加減 -->
       <Demo3 />
 
-      <!-- Demo4驗證日期格式 -->
+      <!-- 驗證日期格式 -->
       <Demo4 />
     </main>
   </div>

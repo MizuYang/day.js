@@ -2,7 +2,7 @@ import { ref, watchEffect } from 'vue'
 import dayjs from 'dayjs'
 
 // 匯入語系
-import 'dayjs/locale/zh-cn'
+import 'dayjs/locale/zh-tw'
 import 'dayjs/locale/ja'
 
 // 匯入 dayjs 的 plugin
@@ -18,7 +18,7 @@ export function useLang () {
   dayjs.extend(localeData)
   dayjs().localeData()
 
-  const lang = ref('zh-cn')
+  const lang = ref('zh-tw')
 
   // watchEffect
   // 設定語系
