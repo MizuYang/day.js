@@ -3,9 +3,16 @@ import { defineStore } from 'pinia'
 import dayjs from 'dayjs'
 
 import isBetween from 'dayjs/plugin/isBetween'
+
+// store
+import { useDayjsStore } from '@/stores/dayjs.js'
+
 dayjs.extend(isBetween)
 
 export const useIsBetweenStore = defineStore('isBetweenStore', () => {
+  // store
+  const { checkIsValid } = useDayjsStore()
+
   // data
   const data = reactive({
     startDate: '2023-11-20 00:00',
@@ -14,14 +21,9 @@ export const useIsBetweenStore = defineStore('isBetweenStore', () => {
   })
   const isBetween = ref(false)
   const { startDate, endDate, centerDate } = toRefs(data)
-  const rules = [
-    'YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD',
-    'YYYY/MM/DD HH:mm:ss', 'YYYY/MM/DD HH:mm', 'YYYY/MM/DD',
-    'YYYY.MM.DD HH:mm:ss', 'YYYY.MM.DD HH:mm', 'YYYY.MM.DD'
-  ]
 
   function updateDate (e, keyName) {
-    const isValid = dayjs(e.target.value, rules, true).isValid()
+    const isValid = checkIsValid(e.target.value)
     if (!isValid) return
 
     data[keyName] = e.target.value

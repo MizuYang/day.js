@@ -2,8 +2,14 @@ import { ref, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
+// store
+import { useDayjsStore } from '@/stores/dayjs.js'
+
+dayjs.extend(relativeTime)
+
 export function useToday () {
-  dayjs.extend(relativeTime)
+  // store
+  const { checkIsValid } = useDayjsStore()
 
   // data
   const today = ref(dayjs())
@@ -20,12 +26,7 @@ export function useToday () {
     toNow.value = dayjs(inputDate.value).toNow()
   }
   function updateDemo (e) {
-    const rules = [
-      'YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD',
-      'YYYY/MM/DD HH:mm:ss', 'YYYY/MM/DD HH:mm', 'YYYY/MM/DD',
-      'YYYY.MM.DD HH:mm:ss', 'YYYY.MM.DD HH:mm', 'YYYY.MM.DD'
-    ]
-    const isValid = dayjs(e.target.value, rules, true).isValid()
+    const isValid = checkIsValid(e.target.value)
 
     if (!isValid) return
 

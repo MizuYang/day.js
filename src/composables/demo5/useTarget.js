@@ -1,9 +1,14 @@
 import { reactive, toRefs, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+// store
+import { useDayjsStore } from '@/stores/dayjs.js'
+
+dayjs.extend(relativeTime)
 
 export function useTarget () {
-  dayjs.extend(relativeTime)
+  // store
+  const { checkIsValid } = useDayjsStore()
 
   // data
   const data = reactive({
@@ -26,12 +31,7 @@ export function useTarget () {
     to.value = dayjs(aDate.value).to(bDate.value)
   }
   function updateDemo (e, keyName) {
-    const rules = [
-      'YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD',
-      'YYYY/MM/DD HH:mm:ss', 'YYYY/MM/DD HH:mm', 'YYYY/MM/DD',
-      'YYYY.MM.DD HH:mm:ss', 'YYYY.MM.DD HH:mm', 'YYYY.MM.DD'
-    ]
-    const isValid = dayjs(e.target.value, rules, true).isValid()
+    const isValid = checkIsValid(e.target.value)
 
     if (!isValid) return
 
