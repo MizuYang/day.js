@@ -1,5 +1,6 @@
 <template>
-  <div class="w-100 bg-whitesmoke me-5 px-10 py-15">
+  <div class="w-100 bg-whitesmoke me-5 px-10 pt-12"
+       style="padding-bottom:53px;">
     <h3 class="text-18 text-center fw-bold-7 mb-5">某日期到今天相距多少時間</h3>
     今天日期: {{ today.format('YYYY-MM-DD HH:mm:ss') }}
 
