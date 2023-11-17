@@ -45,6 +45,9 @@
 
       <!-- 驗證日期格式 -->
       <Demo4 />
+
+      <!-- 日期相距時間 -->
+      <Demo5 />
     </main>
   </div>
 </template>
@@ -56,6 +59,7 @@ import Demo1 from '@/components/Demo1列出該語系的月份和週.vue'
 import Demo2 from '@/components/Demo2比較日期的大小.vue'
 import Demo3 from '@/components/Demo3日期加減.vue'
 import Demo4 from '@/components/Demo4驗證日期格式.vue'
+import Demo5 from '@/components/Demo5日期相距時間.vue'
 
 // composables
 import { useLang } from '@/composables/useLang.js'
