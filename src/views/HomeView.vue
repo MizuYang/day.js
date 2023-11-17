@@ -48,6 +48,9 @@
 
       <!-- 日期相距時間 -->
       <Demo5 />
+
+      <!--是否在兩個日期之間 -->
+      <Demo6 />
     </main>
   </div>
 </template>
@@ -60,6 +63,7 @@ import Demo2 from '@/components/Demo2比較日期的大小.vue'
 import Demo3 from '@/components/Demo3日期加減.vue'
 import Demo4 from '@/components/Demo4驗證日期格式.vue'
 import Demo5 from '@/components/Demo5日期相距時間.vue'
+import Demo6 from '@/components/Demo6是否在兩個日期之間.vue'
 
 // composables
 import { useLang } from '@/composables/useLang.js'
