@@ -17,7 +17,8 @@
               class="form-control text-center mx-2"
               id="demo7Hour"
               placeholder="請輸入小時"
-              v-model="data.months"
+              :value="data.months+1"
+              @change="updateMonth"
               style="width:100px;">
       <span class="mx-3">月</span>
     </label>
@@ -64,6 +65,10 @@ const result = ref('')
 watchEffect(() => {
   result.value = dayjs(data).format('YYYY-MM-DD')
 })
+
+function updateMonth (e) {
+  data.months = e.target.value - 1
+}
 </script>
 
 <style lang='scss' scope></style>
